@@ -1,0 +1,20 @@
+Nazov statu:a
+rozloha statu:  5555
+pocet obyvatelov 5555 
+ 
+Nazov statu:q
+rozloha statu:  1123
+pocet obyvatelov 2435 
+ 
+Nazov statu:e
+rozloha statu:  54346
+pocet obyvatelov 14543 
+ 
+Nazov statu:Uzbekistan
+rozloha statu:  10000
+pocet obyvatelov 3000 
+ 
+Nazov statu:jddj
+rozloha statu:  23273
+pocet obyvatelov 7378 
+ 

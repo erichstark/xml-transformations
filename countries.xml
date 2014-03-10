@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="staty.xsl"?><staty>
+
+	<stat>
+		<nazov>a</nazov>
+		<rozloha>5555</rozloha>
+		<pocetObyvatelov>5555</pocetObyvatelov>
+	</stat>
+<stat>
+<nazov>q</nazov>
+<rozloha>1123</rozloha>
+<pocetObyvatelov>2435</pocetObyvatelov>
+</stat>
+<stat>
+<nazov>e</nazov>
+<rozloha>54346</rozloha>
+<pocetObyvatelov>14543</pocetObyvatelov>
+</stat>
+<stat link="www.uzbekistan.org">
+<nazov>Uzbekistan</nazov>
+<rozloha>10000</rozloha>
+<pocetObyvatelov>3000</pocetObyvatelov>
+</stat>
+<stat link="ksjsj">
+<nazov>jddj</nazov>
+<rozloha>23273</rozloha>
+<pocetObyvatelov>7378</pocetObyvatelov>
+</stat>
+<stat link="asdasda">
+<nazov>Ukaka</nazov>
+<rozloha>15556</rozloha>
+<pocetObyvatelov>135</pocetObyvatelov>
+</stat>
+</staty>
