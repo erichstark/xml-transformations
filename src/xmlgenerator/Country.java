@@ -5,10 +5,6 @@
  */
 package xmlgenerator;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class Country {
 
     String nazov;
@@ -28,7 +24,6 @@ public class Country {
         return nazov;
     }
 
-    @XmlElement
     public void setNazov(String nazov) {
         this.nazov = nazov;
     }
@@ -37,7 +32,6 @@ public class Country {
         return rozloha;
     }
 
-    @XmlElement
     public void setRozloha(String rozloha) {
         this.rozloha = rozloha;
     }
@@ -46,7 +40,6 @@ public class Country {
         return pocetObyvatelov;
     }
 
-    @XmlElement
     public void setPocetObyvatelov(String pocetObyvatelov) {
         this.pocetObyvatelov = pocetObyvatelov;
     }

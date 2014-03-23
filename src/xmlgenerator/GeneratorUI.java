@@ -41,7 +41,7 @@ import org.xml.sax.SAXException;
  *
  * @author jakubrehak
  */
-public class generatorUI extends javax.swing.JFrame {
+public class GeneratorUI extends javax.swing.JFrame {
 
     String xmlko;
     String xsdecko;
@@ -53,7 +53,7 @@ public class generatorUI extends javax.swing.JFrame {
     /**
      * Creates new form generatorUI
      */
-    public generatorUI() throws IOException {
+    public GeneratorUI() throws IOException {
 
         initComponents();
 
@@ -288,7 +288,7 @@ public class generatorUI extends javax.swing.JFrame {
             createElement();
 
         } catch (TransformerException ex) {
-            Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
@@ -324,9 +324,9 @@ public class generatorUI extends javax.swing.JFrame {
             labelWarMessages.setForeground(Color.green);
             labelWarMessages.setText("Vygenerovali ste staty.txt");
         } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
-            Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
             labelWarMessages.setForeground(Color.red);
             labelWarMessages.setText("Pre generovanie txt treba zvoliť XSL");
@@ -373,9 +373,9 @@ public class generatorUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, output, "Transformácia do textu", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (TransformerException ex) {
-            Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
             labelWarMessages.setForeground(Color.red);
             labelWarMessages.setText("Pre generovanie txt treba zvoliť XSL");
@@ -397,13 +397,13 @@ public class generatorUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(generatorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneratorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(generatorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneratorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(generatorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneratorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(generatorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GeneratorUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -412,9 +412,9 @@ public class generatorUI extends javax.swing.JFrame {
             @Override
             public void run() {
                 try {
-                    new generatorUI().setVisible(true);
+                    new GeneratorUI().setVisible(true);
                 } catch (IOException ex) {
-                    Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
             }
@@ -472,7 +472,7 @@ public class generatorUI extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             labelWarMessages.setText("Nieje zvolene XML na pracu");
         } catch (IOException ex) {
-            Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
             labelWarMessages.setText("Nieje zvolene XML na pracu");
         }
     }
@@ -492,7 +492,7 @@ public class generatorUI extends javax.swing.JFrame {
             try {
                 document = documentBuilder.parse(xmlko);
             } catch (SAXException | IOException ex) {
-                Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
 
             } catch (Exception e) {
                 labelWarMessages.setForeground(Color.red);
@@ -533,7 +533,7 @@ public class generatorUI extends javax.swing.JFrame {
             labelWarMessages.setText("");
             refreshXml(xmlko);
         } catch (ParserConfigurationException ex) {
-            Logger.getLogger(generatorUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
 
         }
     }
