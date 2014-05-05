@@ -409,14 +409,18 @@ public class GeneratorUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void btnSignXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignXMLActionPerformed
-        new SignDispatch(xsdecko, xslko, xmlko).Sign();
+        new SignDispatch(xsdecko, xslko, xmlko).sign();
         
     }//GEN-LAST:event_btnSignXMLActionPerformed
 
     private void btnTimeStampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimeStampActionPerformed
 
         try {
-            new SignDispatch(xsdecko, xslko, xmlko).SignTimeStamp();
+            boolean isOk = new SignDispatch(xsdecko, xslko, xmlko).signTimeStamp();
+            if(isOk) {
+                JOptionPane.showMessageDialog(null, "Peciatka do suboru \"signTimeStamp.xml\" bola vytvorena!",
+                "TimeStamp", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (SAXException ex) {
             Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParserConfigurationException ex) {

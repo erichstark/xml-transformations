@@ -48,7 +48,7 @@ public class SignDispatch {
         this.xmlName = xmlName;
     }
     
-    public void Sign() {
+    public void sign() {
         String sign;
         ActiveXComponent ACX = new ActiveXComponent("DSig.XadesSigAtl");
         ActiveXComponent ACXp = new ActiveXComponent("DSig.XmlPluginAtl");
@@ -103,39 +103,37 @@ public class SignDispatch {
         return port.getTimestamp(dataB64);
     }
 
-    public void SignTimeStamp() throws SAXException, ParserConfigurationException, IOException {
-        //String ocspUrl = "http://test.ditec.sk/timestampws/TS.ampx";
-        byte[] digest = getZnacka().getBytes();
-        //OutputStream out = null;
+    public boolean signTimeStamp() throws SAXException, ParserConfigurationException, IOException {
+        byte[] digest = getSignature().getBytes();
 
         try {
             String str = getTimestamp(new String(Base64.encode(digest)));
             byte[] out = Base64.decode(str.getBytes());
-            TimeStampResponse tsresp = new TimeStampResponse(out);
-            TimeStampToken tsToken = tsresp.getTimeStampToken();
-            VlozPeciatku(new String(Base64.encode(tsToken.getEncoded())));
-            System.out.println("Opeciatkovane");
+            TimeStampResponse tsResponse = new TimeStampResponse(out);
+            TimeStampToken tsToken = tsResponse.getTimeStampToken();
+            signWithTimeStamp(new String(Base64.encode(tsToken.getEncoded())));
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
 
-    private String getZnacka() throws SAXException, ParserConfigurationException, IOException {
+    private String getSignature() throws SAXException, ParserConfigurationException, IOException {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-        Document doc = docBuilder.parse("podpisane.xml");
+        Document doc = docBuilder.parse("sign.xml");
         NodeList a = ((Element) doc.getElementsByTagName("ds:Signature").item(0)).getElementsByTagName("ds:SignatureValue");
         Element b = (Element) a.item(0);
         NodeList c = b.getChildNodes();
-        String retazec = new String(((Node) c.item(0)).getNodeValue());
-        return retazec;
+        return ((Node) c.item(0)).getNodeValue();
     }
 
-    private void VlozPeciatku(String strPeciatka) {
+    private void signWithTimeStamp(String strPeciatka) {
         try {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse("podpisane.xml");
+            Document doc = docBuilder.parse("sign.xml");
             Node qN = doc.getElementsByTagName("xades:QualifyingProperties").item(0);
             Element uN = doc.createElement("xades:UnsignedProperties");
             qN.appendChild(uN);
@@ -152,7 +150,7 @@ public class SignDispatch {
             qN.appendChild(uN);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
-            transformer.transform(new DOMSource(doc), new StreamResult(new File("podpisaneTS.xml")));
+            transformer.transform(new DOMSource(doc), new StreamResult(new File("signTimeStamp.xml")));
         } catch (Exception e) {
             e.printStackTrace();
         }
