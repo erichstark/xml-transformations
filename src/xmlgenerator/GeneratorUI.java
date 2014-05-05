@@ -83,6 +83,7 @@ public class GeneratorUI extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         labelWarMessages = new javax.swing.JLabel();
         btnSignXML = new javax.swing.JButton();
+        btnTimeStamp = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         open = new javax.swing.JMenuItem();
@@ -131,6 +132,13 @@ public class GeneratorUI extends javax.swing.JFrame {
         btnSignXML.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignXMLActionPerformed(evt);
+            }
+        });
+
+        btnTimeStamp.setText("Pečiatka");
+        btnTimeStamp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimeStampActionPerformed(evt);
             }
         });
 
@@ -246,7 +254,10 @@ public class GeneratorUI extends javax.swing.JFrame {
                                 .addComponent(textFieldCitizenNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addComponent(jScrollPane2)
                         .addComponent(jSeparator1))
-                    .addComponent(btnSignXML, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnTimeStamp)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSignXML, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -277,7 +288,9 @@ public class GeneratorUI extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnSignXML)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSignXML)
+                    .addComponent(btnTimeStamp))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -396,8 +409,22 @@ public class GeneratorUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void btnSignXMLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignXMLActionPerformed
-        SignDispatch signDispatch = new SignDispatch(xsdecko, xslko, xmlko);
+        new SignDispatch(xsdecko, xslko, xmlko).Sign();
+        
     }//GEN-LAST:event_btnSignXMLActionPerformed
+
+    private void btnTimeStampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimeStampActionPerformed
+
+        try {
+            new SignDispatch(xsdecko, xslko, xmlko).SignTimeStamp();
+        } catch (SAXException ex) {
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GeneratorUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnTimeStampActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -557,6 +584,7 @@ public class GeneratorUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToXML;
     private javax.swing.JButton btnSignXML;
+    private javax.swing.JButton btnTimeStamp;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JMenuItem generateTxtToFile;
     private javax.swing.JLabel jLabel1;

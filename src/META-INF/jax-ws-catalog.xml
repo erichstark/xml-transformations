@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://test.ditec.sk/timestampws/TS.aspx" uri="xml-resources/web-service-references/TS_1/wsdl/test.ditec.sk/timestampws/TS.aspx"/>
+    <system systemId="http://test.ditec.sk/timestampws/TS.asmx" uri="wsdl/test.ditec.sk/timestampws/TS.asmx"/>
+    <system systemId="http://test.ditec.sk/timestampws/TS.asmx?wsdl" uri="wsdl/test.ditec.sk/timestampws/TS.asmx.wsdl"/>
+</catalog>
